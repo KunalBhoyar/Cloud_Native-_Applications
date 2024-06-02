@@ -162,11 +162,3 @@ cython_debug/
 #.idea/
 
 
-# Ignore .terraform directory
-.terraform/
-
-
-# Other ignore rules can be added here
-node_modules/
-*.log
-*.env
