@@ -1,0 +1,2 @@
+*.psd filter=lfs diff=lfs merge=lfs -text
+IT_Chat_Bot/Knowledge_Base/terraform-ec2-docker/.terraform/** filter=lfs diff=lfs merge=lfs -text

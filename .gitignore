@@ -162,9 +162,3 @@ cython_debug/
 #.idea/
 
 
-
-
-# .gitignore
-.terraform/
-venv/
-
