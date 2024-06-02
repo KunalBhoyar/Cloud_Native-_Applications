@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Upload and Query</title>
+</head>
+<body>
+    <h1>Upload Documents</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="files" id="files" multiple>
+        <button type="button" onclick="uploadFiles()">Upload</button>
+    </form>
+    <div id="upload-response"></div>
+
+    <h1>Query Documents</h1>
+    <form id="query-form">
+        <input type="text" name="question" id="question" placeholder="Enter your question">
+        <button type="button" onclick="queryDocuments()">Query</button>
+    </form>
+    <div id="query-response"></div>
+
+    <script>
+        async function uploadFiles() {
+            const form = document.getElementById('upload-form');
+            const formData = new FormData(form);
+
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            document.getElementById('upload-response').innerText = JSON.stringify(result, null, 2);
+        }
+
+        async function queryDocuments() {
+            const question = document.getElementById('question').value;
+
+            const response = await fetch('/query', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question })
+            });
+
+            const result = await response.json();
+            document.getElementById('query-response').innerText = JSON.stringify(result, null, 2);
+        }
+    </script>
+</body>
+</html>

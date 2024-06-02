@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build:
+      context: .
+    ports:
+      - "80:8000"
+    volumes:
+      - ./uploaded_documents:/app/uploaded_documents
